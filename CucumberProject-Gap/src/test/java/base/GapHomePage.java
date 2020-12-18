@@ -41,7 +41,7 @@ public class GapHomePage {
 	private By jeansLink = By.linkText("Jeans ");
 	private By straightScrollDown = By.xpath("//img[@alt='Girls Denim Shop, Straight']");
 	
-	
+	private By testFeature;
 	public void openUp() {
 		 System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		  driver = new ChromeDriver();
