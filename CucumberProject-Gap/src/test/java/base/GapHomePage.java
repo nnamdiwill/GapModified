@@ -9,19 +9,24 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,23 +42,51 @@ public class GapHomePage {
 	private By hoodiesLink = By.linkText("Hoodies");
 	private By girlDropDown = By.xpath("//button[@data-divisionname='Girls']");
 	
-	private By exForPopup = By.xpath("//button[attribute::class='css-1qosac6']");
+	//private By exForPopup = By.xpath("//button[attribute::class='css-1qosac6']");
+	private By exForPopup = By.xpath("//div[@class='css-x5foxo']//button[@class='css-1qosac6']");
 	private By jeansLink = By.linkText("Jeans ");
 	private By straightScrollDown = By.xpath("//img[@alt='Girls Denim Shop, Straight']");
-	
+	private By popupWindow = By.xpath("//div[@class='css-q5fqw0']");
 	private By testFeature;
 	public void openUp() {
 		 System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+//		 ChromeOptions options = new ChromeOptions();
+//		 options.addArguments("--disable-notifications");
 		  driver = new ChromeDriver();
 		 driver.get("https://www.gap.com/");
 		 driver.manage().window().maximize();
+		 String MainWindow=driver.getWindowHandle();
+		 
+//		 try{
+//			 WebElement pop =     driver.findElement(exForPopup);
+//			 pop.click();
+//		        
+//		    }
+//		    catch (NoSuchElementException nse){
+//		       nse.printStackTrace();
+//		       System.out.println("popup interferes");
+//		    
+//		    }
 		
-		WebElement pop = driver.findElement(exForPopup);
-		pop.click();
+		//WebElement pop = driver.findElement(exForPopup);
+//		WebDriverWait wdw = new WebDriverWait(driver,20);
+//		wdw.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[attribute::class='css-1qosac6']")));
+//		pop.click();
 		 
 
-		 
-		 
+//		 String parentWindowHandler = driver.getWindowHandle(); // Store your parent window
+//		 String subWindowHandler = null;
+//		 
+//		 Set<String> handles = driver.getWindowHandles(); 
+//		 Iterator<String> iterator = handles.iterator();
+//		 while (iterator.hasNext()){
+//		     subWindowHandler = iterator.next();
+//		 }
+//		 driver.switchTo().window(subWindowHandler);
+		 driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		 WebElement pop =     driver.findElement(exForPopup);
+		 pop.click();
+		// driver.switchTo().window(parentWindowHandler); 
 	}
 	
 	public void hoverOverMen() {
@@ -62,7 +95,8 @@ public class GapHomePage {
 		Actions act1 = new Actions(driver);
 		act1.moveToElement(men).perform();
 		
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		men.click();
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		
 		
 	}
