@@ -32,23 +32,30 @@ public class GapStepDefs {
 	
 	@And("goes to girl dropdown")
 	public void goes_to_girl_dropdown() {
-	    
+	    ghp.goToGirlsDropDown();
 	}
 	@And("select and click on jeans")
 	public void select_and_click_on_jeans() {
-	   
+	   ghp.clickJeans();
 	}
 	@And("select straight category")
 	public void select_straight_category() {
-	   
+	   ghp.straightDrop();
 	}
 	@And("select high rise mom jeans")
 	public void select_high_rise_mom_jeans() {
+	   ghp.selectTeenMom();
 	   
-	}
+	   }
 	@And("select proper size")
 	public void select_proper_size() {
-	   
+	  ghp.setTeenMomSize();
+	  
+	}
+	
+	@Then("close Browser")
+	public void closingBrowser() {
+		ghp.closeBrowser();
 	}
 	
 

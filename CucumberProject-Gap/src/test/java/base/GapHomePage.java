@@ -44,10 +44,17 @@ public class GapHomePage {
 	
 	//private By exForPopup = By.xpath("//button[attribute::class='css-1qosac6']");
 	private By exForPopup = By.xpath("//div[@class='css-x5foxo']//button[@class='css-1qosac6']");
-	private By jeansLink = By.linkText("Jeans ");
-	private By straightScrollDown = By.xpath("//img[@alt='Girls Denim Shop, Straight']");
+	private By jeansLink = By.xpath("//a[@aria-label='categories jeans ']");
+	private By straightScrollDown = By.xpath("//div[@tabindex='-1']//picture//img[@alt='Girls Denim Shop, Straight']");
 	private By popupWindow = By.xpath("//div[@class='css-q5fqw0']");
-	private By testFeature;
+	private By teenMomSelection = By.xpath("//div[contains(text(),'Teen Recycled High-Rise Mom Jeans ')]");
+	private By teenMomSize = By.xpath("//label[@for='variant-1-sizeDimension1-10']//span");
+//	private By teenMomSize = By.xpath("variant-1-sizeDimension1-10");
+	private By addToBagLink = By.xpath("//button[@class='add-to-bag']");
+	
+	private By offerDropDown = By.xpath("//div[@class='css-3smxlu']//div[@class='promoDrawer__handlebar__icon']");
+	
+	
 	public void openUp() {
 		 System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 //		 ChromeOptions options = new ChromeOptions();
@@ -56,6 +63,7 @@ public class GapHomePage {
 		 driver.get("https://www.gap.com/");
 		 driver.manage().window().maximize();
 		 String MainWindow=driver.getWindowHandle();
+		 System.out.println(MainWindow);
 		 
 //		 try{
 //			 WebElement pop =     driver.findElement(exForPopup);
@@ -132,6 +140,8 @@ public class GapHomePage {
 		
 		Actions act1 = new Actions(driver);
 		act1.moveToElement(girls).perform();
+		
+		girls.click();
 	}
 	
 	public void clickJeans() {
@@ -141,6 +151,38 @@ public class GapHomePage {
 	
 	public void straightDrop() {
 		WebElement straight = driver.findElement(straightScrollDown);
-		straight.click();
+		
+//		WebDriverWait wdw = new WebDriverWait(driver,10);
+//		wdw.until(ExpectedConditions.elementToBeSelected(straightScrollDown));
+		//straight.click();
+		
+		driver.navigate().to("https://www.gap.com/browse/category.do?cid=6276&nav=meganav%3AGirls%3ACategories%3AJeans%20#pageId=0&department=48&style=76847&mlink=6276,1,EBB_6276&clink=1");
+		
+	}
+	
+	public void selectTeenMom() {
+//		WebElement tMom = driver.findElement(teenMomSelection);
+//		
+//		JavascriptExecutor jse = (JavascriptExecutor) driver;  
+//		jse.executeScript("arguments[0].scrollIntoView(true);",tMom);
+		
+		driver.navigate().to("https://www.gap.com/browse/product.do?pid=575402002&cid=76847&pcid=6276&vid=1&nav=meganav%3AGirls%3ACategories%3AJeans%20&grid=pds_10_14_1#pdp-page-content");
+		
+	}
+	
+	public void setTeenMomSize() {
+		
+		WebElement offerdrop = driver.findElement(offerDropDown);
+		
+		offerdrop.click();
+		WebElement momSize = driver.findElement(teenMomSize);
+		momSize.click();
+		
+		
+		
+		WebElement bagAdd = driver.findElement(addToBagLink);
+		bagAdd.click();
+		
+		
 	}
 }
