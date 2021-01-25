@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -52,7 +53,7 @@ public class GapHomePage {
 //	private By teenMomSize = By.xpath("variant-1-sizeDimension1-10");
 	private By addToBagLink = By.xpath("//button[@class='add-to-bag']");
 	
-	private By offerDropDown = By.xpath("//div[@class='css-3smxlu']//div[@class='promoDrawer__handlebar__icon']");
+	private By offerDropDown = By.xpath("//div[@style='display: flex;']//div[@class='promoDrawer__handlebar__icon']");
 	
 	
 	public void openUp() {
@@ -175,6 +176,12 @@ public class GapHomePage {
 		WebElement offerdrop = driver.findElement(offerDropDown);
 		
 		offerdrop.click();
+		
+//		Alert a1 = driver.switchTo().alert();
+//		
+//		a1.accept();
+		
+		
 		WebElement momSize = driver.findElement(teenMomSize);
 		momSize.click();
 		

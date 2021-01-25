@@ -22,7 +22,7 @@ public class GapStepDefs {
 	}
 	@Then("close browser")
 	public void close_browser() {
-	   ghp.closeBrowser();
+	  // ghp.closeBrowser();
 	}
 
 	@Given("opens the browser")
@@ -55,7 +55,7 @@ public class GapStepDefs {
 	
 	@Then("close Browser")
 	public void closingBrowser() {
-		ghp.closeBrowser();
+		//ghp.closeBrowser();
 	}
 	
 

@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features={"src/test/resources"}, glue= {"stepDefs"},tags="@GapTests", plugin={"pretty","html:target/Destination.html"} )
+@CucumberOptions(features={"src/test/resources"}, glue= {"stepDefs"},tags="@FBTest1", plugin={"pretty","html:target/Destination.html"} )
 public class Runner {
 
 	
